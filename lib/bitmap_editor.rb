@@ -14,6 +14,12 @@ class BitmapEditor
         y = line[2].to_i - 1
         colour = line[3]
         image = colour_pixel(x, y, colour, image)
+      when 'V'
+        x = line[1].to_i - 1
+        y1 = line[2].to_i - 1
+        y2 = line[3].to_i - 1
+        colour = line[4]
+        image = colour_vertical_segment(x, y1, y2, colour, image)
       when 'S'
         image = convert_image_matrix_to_string(image)
       else
@@ -32,8 +38,14 @@ class BitmapEditor
     image
   end
 
+  def colour_vertical_segment(x, y1, y2, colour, image)
+    return unless image.is_a? Array
+    image[y1..y2].map{ |row| row[x] = colour }
+    image
+  end
+
   def convert_image_matrix_to_string(image)
     return unless image.is_a? Array
-    image.map{|r| r.join }.join("\n")
+    image.map{|row| row.join }.join("\n")
   end
 end
