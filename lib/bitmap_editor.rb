@@ -10,11 +10,7 @@ class BitmapEditor
       when 'L'
         image = colour_pixel(image, line[1..3])
       when 'V'
-        x = line[1].to_i - 1
-        y1 = line[2].to_i - 1
-        y2 = line[3].to_i - 1
-        colour = line[4]
-        image = colour_vertical_segment(x, y1, y2, colour, image)
+        image = colour_vertical_segment(image, line[1..4])
       when 'H'
         x1 = line[1].to_i - 1
         x2 = line[2].to_i - 1
@@ -50,8 +46,12 @@ class BitmapEditor
     image
   end
 
-  def colour_vertical_segment(x, y1, y2, colour, image)
+  def colour_vertical_segment(image, args)
     return unless image.is_a? Array
+    x = args[0].to_i - 1
+    y1 = args[1].to_i - 1
+    y2 = args[2].to_i - 1
+    colour = args[3]
     image[y1..y2].map{ |row| row[x] = colour }
     image
   end
