@@ -12,11 +12,7 @@ class BitmapEditor
       when 'V'
         image = colour_vertical_segment(image, line[1..4])
       when 'H'
-        x1 = line[1].to_i - 1
-        x2 = line[2].to_i - 1
-        y = line[3].to_i - 1
-        colour = line[4]
-        colour_horizontal_segment(x1, x2, y, colour, image)
+        image = colour_horizontal_segment(image, line[1..4])
       when 'S'
         image = convert_image_matrix_to_string(image)
       else
@@ -40,8 +36,12 @@ class BitmapEditor
     image
   end
 
-  def colour_horizontal_segment(x1, x2, y, colour, image)
+  def colour_horizontal_segment(image, args)
     return unless image.is_a? Array
+    x1 = args[0].to_i - 1
+    x2 = args[1].to_i - 1
+    y = args[2].to_i - 1
+    colour = args[3]
     image[y].fill(colour, x1..x2)
     image
   end
