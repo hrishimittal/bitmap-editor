@@ -8,8 +8,7 @@ class BitmapEditor
       when 'I'
         m = line[1].to_i
         n = line[2].to_i
-        b = Array.new(n){Array.new(m,'O')}
-        output += b.map{|r| r.join }.join("\n")
+        output = create_image(m, n, output)
       when 'S'
         output = 'There is no image' if output.empty?
       else
@@ -17,5 +16,11 @@ class BitmapEditor
       end
     end
     puts output
+  end
+
+  def create_image(m, n, output)
+    b = Array.new(n){Array.new(m,'O')}
+    output += b.map{|r| r.join }.join("\n")
+    output
   end
 end
