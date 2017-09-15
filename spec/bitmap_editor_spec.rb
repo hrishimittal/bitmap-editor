@@ -71,3 +71,19 @@ describe 'H' do
     end
   end
 end
+
+describe 'C' do
+  let(:output) { `bin/bitmap_editor ./examples/clear_image.txt` }
+
+  it 'clears the image, setting all pixels to white (O)' do
+    expect(output).to eq(<<~EOS
+                            OOOOO
+                            OOOOO
+                            OOOOO
+                            OOOOO
+                            OOOOO
+                            OOOOO
+                          EOS
+                          )
+  end
+end
