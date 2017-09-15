@@ -6,9 +6,7 @@ class BitmapEditor
       line = line.chomp.split(" ")
       case line[0]
       when 'I'
-        m = line[1].to_i
-        n = line[2].to_i
-        image = create_image(m, n)
+        image = create_image(line[1..2])
       when 'L'
         x = line[1].to_i - 1
         y = line[2].to_i - 1
@@ -35,7 +33,9 @@ class BitmapEditor
     puts image
   end
 
-  def create_image(m, n)
+  def create_image(args)
+    m = args[0].to_i
+    n = args[1].to_i
     Array.new(n){Array.new(m,'O')}
   end
 
