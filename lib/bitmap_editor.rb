@@ -4,15 +4,17 @@ class BitmapEditor
     image = 'There is no image'
     File.open(file).each do |line|
       line = line.chomp.split(" ")
-      case line[0]
+      command = line[0]
+      args = line[1..-1]
+      case command
       when 'I'
-        image = create_image(line[1..2])
+        image = create_image(args)
       when 'L'
-        image = colour_pixel(image, line[1..3])
+        image = colour_pixel(image, args)
       when 'V'
-        image = colour_vertical_segment(image, line[1..4])
+        image = colour_vertical_segment(image, args)
       when 'H'
-        image = colour_horizontal_segment(image, line[1..4])
+        image = colour_horizontal_segment(image, args)
       when 'S'
         image = convert_image_matrix_to_string(image)
       else
