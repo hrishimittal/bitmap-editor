@@ -40,10 +40,28 @@ describe 'V' do
   context 'when given 4 arguments X, Y1, Y2 and C' do
     let(:output) { `bin/bitmap_editor ./examples/colour_vertical_segment.txt` }
 
-    it 'draws a vertical segment of colour C in col X between rows Y1 and Y2' do
+    it 'draws a vertical segment of colour C in column X between rows Y1 and Y2' do
       expect(output).to eq(<<~EOS
                               OOOOO
                               OOOOO
+                              AWOOO
+                              OWOOO
+                              OWOOO
+                              OWOOO
+                            EOS
+                            )
+    end
+  end
+end
+
+describe 'H' do
+  context 'when given 4 arguments X1, X2, Y and C' do
+    let(:output) { `bin/bitmap_editor ./examples/colour_horizontal_segment.txt` }
+
+    it 'draws a horizontal segment of colour C in col Y between columns X1 and X2' do
+      expect(output).to eq(<<~EOS
+                              OOOOO
+                              OOZZZ
                               AWOOO
                               OWOOO
                               OWOOO
