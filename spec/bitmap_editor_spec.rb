@@ -44,7 +44,7 @@ describe 'V' do
       expect(output).to eq(<<~EOS
                               OOOOO
                               OOOOO
-                              AWOOO
+                              OWOOO
                               OWOOO
                               OWOOO
                               OWOOO
@@ -62,10 +62,10 @@ describe 'H' do
       expect(output).to eq(<<~EOS
                               OOOOO
                               OOZZZ
-                              AWOOO
-                              OWOOO
-                              OWOOO
-                              OWOOO
+                              OOOOO
+                              OOOOO
+                              OOOOO
+                              OOOOO
                             EOS
                             )
     end
