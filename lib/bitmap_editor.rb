@@ -29,6 +29,7 @@ class BitmapEditor
   end
 
   def colour_pixel(image, args)
+    return unless image.is_a? Array
     x = args[0].to_i - 1
     y = args[1].to_i - 1
     colour = args[2]
