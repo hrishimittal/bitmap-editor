@@ -8,10 +8,7 @@ class BitmapEditor
       when 'I'
         image = create_image(line[1..2])
       when 'L'
-        x = line[1].to_i - 1
-        y = line[2].to_i - 1
-        colour = line[3]
-        image = colour_pixel(x, y, colour, image)
+        image = colour_pixel(image, line[1..3])
       when 'V'
         x = line[1].to_i - 1
         y1 = line[2].to_i - 1
@@ -39,7 +36,10 @@ class BitmapEditor
     Array.new(n){Array.new(m,'O')}
   end
 
-  def colour_pixel(x, y, colour, image)
+  def colour_pixel(image, args)
+    x = args[0].to_i - 1
+    y = args[1].to_i - 1
+    colour = args[2]
     image[y][x] = colour
     image
   end
