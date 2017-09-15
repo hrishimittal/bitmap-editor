@@ -15,6 +15,8 @@ class BitmapEditor
         image = colour_vertical_segment(image, args)
       when 'H'
         image = colour_horizontal_segment(image, args)
+      when 'C'
+        image = clear_image(image)
       when 'S'
         image = convert_image_matrix_to_string(image)
       else
@@ -57,6 +59,11 @@ class BitmapEditor
     colour = args[3]
     image[y1..y2].map{ |row| row[x] = colour }
     image
+  end
+
+  def clear_image(image)
+    return unless image.is_a? Array
+    image.map{ |row| row.fill('O') }
   end
 
   def convert_image_matrix_to_string(image)
