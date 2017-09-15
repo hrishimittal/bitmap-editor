@@ -35,3 +35,21 @@ describe 'L' do
     end
   end
 end
+
+describe 'V' do
+  context 'when given 4 arguments X, Y1, Y2 and C' do
+    let(:output) { `bin/bitmap_editor ./examples/colour_vertical_segment.txt` }
+
+    it 'draws a verical segment of colour C in col X between rows Y1 and Y2' do
+      expect(output).to eq(<<~EOS
+                              OOOOO
+                              OOOOO
+                              AWOOO
+                              OWOOO
+                              OWOOO
+                              OWOOO
+                            EOS
+                            )
+    end
+  end
+end
