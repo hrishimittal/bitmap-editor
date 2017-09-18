@@ -27,6 +27,13 @@ class Bitmap
     @pixels[y - 1].fill(colour, (x1 - 1)..(x2 - 1))
   end
 
+  def set_vertical_segment_colour(x, y1, y2, colour)
+    y1 = y1 - 1
+    y2 = y2 - 1
+    x = x - 1
+    @pixels[y1..y2].map{ |row| row[x] = colour }
+  end
+
   def set_pixel_colour(x, y, colour)
     if out_of_bounds?(x, @width) || out_of_bounds?(y, @height)
       fail StandardError, "Pixel #{x}, #{y} doesn't exist in bitmap"

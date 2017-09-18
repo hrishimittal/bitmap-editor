@@ -64,11 +64,11 @@ class BitmapEditor
   end
 
   def colour_vertical_segment(args)
-    x = args[0].to_i - 1
-    y1 = args[1].to_i - 1
-    y2 = args[2].to_i - 1
+    x = args[0].to_i
+    y1 = args[1].to_i
+    y2 = args[2].to_i
     colour = args[3]
-    @bitmap.pixels[y1..y2].map{ |row| row[x] = colour }
+    @bitmap.set_vertical_segment_colour(x, y1, y2, colour)
   end
 
   def print_bitmap
