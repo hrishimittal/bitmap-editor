@@ -21,11 +21,14 @@ class Bitmap
   end
 
   def set_pixel_colour(x, y, colour)
-    @pixels[y][x] = colour
+    if out_of_bounds?(x, @width) || out_of_bounds?(y, @height)
+      fail StandardError, "Pixel #{x}, #{y} doesn't exist in bitmap"
+    end
+    @pixels[y - 1][x - 1] = colour
   end
 
   private
-    def out_of_bounds?(dimension)
-      dimension < 1 || dimension > 250
+    def out_of_bounds?(dimension, max = 250)
+      dimension < 1 || dimension > max
     end
 end

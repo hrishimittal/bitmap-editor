@@ -49,8 +49,8 @@ class BitmapEditor
   end
 
   def colour_pixel(args)
-    x = args[0].to_i - 1
-    y = args[1].to_i - 1
+    x = args[0].to_i
+    y = args[1].to_i
     colour = args[2]
     @bitmap.set_pixel_colour(x, y, colour)
   end
