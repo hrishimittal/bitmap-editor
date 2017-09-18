@@ -10,6 +10,8 @@ class BitmapEditor
   def run(filename)
     commands = parse_commands(filename)
     commands.each { |command| execute(command.split) }
+  rescue StandardError => e
+    $stderr.puts e.message
   end
 
   def execute(command_with_args)
@@ -30,7 +32,7 @@ class BitmapEditor
     when 'S'
       print_bitmap
     else
-      raise "Unrecognised command: #{command}"
+      fail StandardError, "Unrecognised command: #{command}"
     end
   end
 

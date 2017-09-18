@@ -87,3 +87,11 @@ describe 'C' do
                           )
   end
 end
+
+describe 'Unrecognised command' do
+  let(:bitmap_editor) { BitmapEditor.new }
+
+  it 'raises Unrecognised command error' do
+    expect { bitmap_editor.execute(['X'])  }.to raise_error(StandardError, "Unrecognised command: X")
+  end
+end
