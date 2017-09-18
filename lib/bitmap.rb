@@ -21,6 +21,9 @@ class Bitmap
   end
 
   def set_horizontal_segment_colour(x1, x2, y, colour)
+    x1 = x1.to_i
+    x2 = x2.to_i
+    y = y.to_i
     if out_of_bounds?(x1, @width) || out_of_bounds?(x2, @width) ||
        out_of_bounds?(y, @height)
       raise StandardError, 'Segment out of bounds'
@@ -29,6 +32,9 @@ class Bitmap
   end
 
   def set_vertical_segment_colour(x, y1, y2, colour)
+    x = x.to_i
+    y1 = y1.to_i
+    y2 = y2.to_i
     if out_of_bounds?(x, @width) || out_of_bounds?(y2, @height) ||
        out_of_bounds?(y2, @height)
       raise StandardError, 'Segment out of bounds'
@@ -37,6 +43,8 @@ class Bitmap
   end
 
   def set_pixel_colour(x, y, colour)
+    x = x.to_i
+    y = y.to_i
     if out_of_bounds?(x, @width) || out_of_bounds?(y, @height)
       raise StandardError, "Pixel #{x}, #{y} doesn't exist in bitmap"
     end

@@ -51,26 +51,26 @@ class BitmapEditor
 
   def colour_pixel(args)
     check_if_bitmap_exists
-    x = args[0].to_i
-    y = args[1].to_i
+    x = args[0]
+    y = args[1]
     colour = args[2]
     @bitmap.set_pixel_colour(x, y, colour)
   end
 
   def colour_horizontal_segment(args)
     check_if_bitmap_exists
-    x1 = args[0].to_i
-    x2 = args[1].to_i
-    y = args[2].to_i
+    x1 = args[0]
+    x2 = args[1]
+    y = args[2]
     colour = args[3]
     @bitmap.set_horizontal_segment_colour(x1, x2, y, colour)
   end
 
   def colour_vertical_segment(args)
     check_if_bitmap_exists
-    x = args[0].to_i
-    y1 = args[1].to_i
-    y2 = args[2].to_i
+    x = args[0]
+    y1 = args[1]
+    y2 = args[2]
     colour = args[3]
     @bitmap.set_vertical_segment_colour(x, y1, y2, colour)
   end
