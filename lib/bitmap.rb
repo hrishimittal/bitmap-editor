@@ -25,8 +25,7 @@ class Bitmap
   end
 
   private
-
-  def out_of_bounds?(dimension)
-    dimension < 1 || dimension > 250
-  end
+    def out_of_bounds?(dimension)
+      dimension < 1 || dimension > 250
+    end
 end
