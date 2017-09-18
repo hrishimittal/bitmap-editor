@@ -21,6 +21,9 @@ class Bitmap
   end
 
   def set_horizontal_segment_colour(x1, x2, y, colour)
+    if out_of_bounds?(x1, @width) || out_of_bounds?(x2, @width) || out_of_bounds?(y, @height)
+      fail StandardError, "Segment out of bounds"
+    end
     @pixels[y - 1].fill(colour, (x1 - 1)..(x2 - 1))
   end
 
