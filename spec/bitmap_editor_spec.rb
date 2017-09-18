@@ -35,9 +35,9 @@ describe BitmapEditor do
 
   describe 'I' do
     context 'when given two integers as arguments' do
-      let(:output) { `bin/bitmap_editor ./examples/create_image.txt` }
+      let(:output) { `bin/bitmap_editor ./examples/create_bitmap.txt` }
 
-      it 'creates an M x N image with colour white (O)' do
+      it 'creates an M x N bitmap with colour white (O)' do
         expect(output).to eq(<<~EOS
                                 OOOOO
                                 OOOOO
@@ -106,9 +106,9 @@ describe BitmapEditor do
   end
 
   describe 'C' do
-    let(:output) { `bin/bitmap_editor ./examples/clear_image.txt` }
+    let(:output) { `bin/bitmap_editor ./examples/clear_bitmap.txt` }
 
-    it 'clears the image, setting all pixels to white (O)' do
+    it 'clears the bitmap, setting all pixels to white (O)' do
       expect(output).to eq(<<~EOS
                               OOOOO
                               OOOOO
