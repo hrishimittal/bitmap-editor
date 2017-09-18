@@ -7,10 +7,9 @@ class BitmapEditor
     @bitmap = nil
   end
 
-  def run(file)
-    return puts 'please provide correct file' if file.nil? || !File.exists?(file)
-    image = 'There is no image'
-    File.open(file).each do |line|
+  def run(filename)
+    commands = parse_commands(filename)
+    commands.each do |line|
       line = line.chomp.split(" ")
       command = line[0]
       args = line[1..-1]
@@ -32,6 +31,13 @@ class BitmapEditor
       end
     end
     puts image
+  end
+
+  def parse_commands(filename)
+    raise 'please provide correct file' if filename.nil? || !File.exists?(filename)
+    IO.readlines(filename).map(&:chomp)
+  rescue RuntimeError => e
+    $stderr.puts e.message
   end
 
   def create_image(args)
