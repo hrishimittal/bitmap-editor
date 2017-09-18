@@ -30,7 +30,7 @@ class BitmapEditor
     when 'S'
       print_bitmap
     else
-      image = 'unrecognised command :('
+      raise "Unrecognised command: #{command}"
     end
   end
 
