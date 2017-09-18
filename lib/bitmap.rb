@@ -1,8 +1,8 @@
 class Bitmap
   def initialize(width, height)
-    @width = width
-    @height = height
-    @pixels = create_pixels(width, height)
+    @width = width.to_i
+    @height = height.to_i
+    @pixels = create_pixels(@width, @height)
   end
 
   def create_pixels(width, height)

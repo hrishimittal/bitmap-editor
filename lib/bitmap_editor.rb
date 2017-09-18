@@ -37,12 +37,13 @@ class BitmapEditor
       raise StandardError,
             'File doesn\'t exist. Please provide a correct command file.'
     end
+
     IO.readlines(filename).map(&:chomp)
   end
 
   def create_bitmap(args)
-    width = args[0].to_i
-    height = args[1].to_i
+    width = args[0]
+    height = args[1]
     @bitmap = Bitmap.new(width, height)
   end
 
