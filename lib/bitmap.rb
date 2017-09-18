@@ -7,7 +7,7 @@ class Bitmap
 
   def create_pixels(width, height)
     raise StandardError, 'Out of bounds' if out_of_bounds?(width) ||
-                                           out_of_bounds?(height)
+                                            out_of_bounds?(height)
     Array.new(height) { Array.new(width, 'O') }
   end
 
