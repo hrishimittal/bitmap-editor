@@ -22,7 +22,7 @@ class BitmapEditor
     when 'L'
       colour_pixel(args)
     when 'V'
-      image = colour_vertical_segment(image, args)
+      colour_vertical_segment(args)
     when 'H'
       image = colour_horizontal_segment(image, args)
     when 'C'
@@ -64,14 +64,12 @@ class BitmapEditor
     image
   end
 
-  def colour_vertical_segment(image, args)
-    return unless image.is_a? Array
+  def colour_vertical_segment(args)
     x = args[0].to_i - 1
     y1 = args[1].to_i - 1
     y2 = args[2].to_i - 1
     colour = args[3]
-    image[y1..y2].map{ |row| row[x] = colour }
-    image
+    @bitmap.pixels[y1..y2].map{ |row| row[x] = colour }
   end
 
   def clear_image(image)
