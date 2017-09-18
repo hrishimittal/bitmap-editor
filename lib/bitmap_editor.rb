@@ -9,28 +9,30 @@ class BitmapEditor
 
   def run(filename)
     commands = parse_commands(filename)
-    commands.each do |line|
-      line = line.chomp.split(" ")
-      command = line[0]
-      args = line[1..-1]
-      case command
-      when 'I'
-        image = create_image(args)
-      when 'L'
-        image = colour_pixel(image, args)
-      when 'V'
-        image = colour_vertical_segment(image, args)
-      when 'H'
-        image = colour_horizontal_segment(image, args)
-      when 'C'
-        image = clear_image(image)
-      when 'S'
-        image = convert_image_matrix_to_string(image)
-      else
-        image = 'unrecognised command :('
-      end
+    commands.each { |command| execute(command.split) }
+  end
+
+  def execute(command_with_args)
+    command = command_with_args.shift
+    args = command_with_args
+
+    case command
+    when 'I'
+      create_image(args)
+      p @bitmap
+    when 'L'
+      image = colour_pixel(image, args)
+    when 'V'
+      image = colour_vertical_segment(image, args)
+    when 'H'
+      image = colour_horizontal_segment(image, args)
+    when 'C'
+      image = clear_image(image)
+    when 'S'
+      image = convert_image_matrix_to_string(image)
+    else
+      image = 'unrecognised command :('
     end
-    puts image
   end
 
   def parse_commands(filename)
@@ -41,9 +43,9 @@ class BitmapEditor
   end
 
   def create_image(args)
-    m = args[0].to_i
-    n = args[1].to_i
-    Array.new(n){Array.new(m,'O')}
+    width = args[0].to_i
+    height = args[1].to_i
+    @bitmap = Bitmap.new(width, height)
   end
 
   def colour_pixel(image, args)
