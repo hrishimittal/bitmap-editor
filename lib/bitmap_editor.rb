@@ -26,7 +26,7 @@ class BitmapEditor
     when 'H'
       colour_horizontal_segment(args)
     when 'C'
-      image = clear_image(image)
+      @bitmap.clear
     when 'S'
       print_bitmap
     else
@@ -68,11 +68,6 @@ class BitmapEditor
     y2 = args[2].to_i - 1
     colour = args[3]
     @bitmap.pixels[y1..y2].map{ |row| row[x] = colour }
-  end
-
-  def clear_image(image)
-    return unless image.is_a? Array
-    image.map{ |row| row.fill('O') }
   end
 
   def print_bitmap
