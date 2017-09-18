@@ -82,6 +82,6 @@ class BitmapEditor
   end
 
   def print_bitmap
-    puts @bitmap.pixels.map{|row| row.join }.join("\n")
+    puts @bitmap.format_pixels
   end
 end

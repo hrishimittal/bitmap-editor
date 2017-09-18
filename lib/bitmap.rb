@@ -6,4 +6,8 @@ class Bitmap
     @height = height
     @pixels = Array.new(height){Array.new(width,'O')}
   end
+
+  def format_pixels
+    @pixels.map{|row| row.join }.join("\n")
+  end
 end
