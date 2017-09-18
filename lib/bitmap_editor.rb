@@ -77,6 +77,7 @@ class BitmapEditor
   end
 
   def print_bitmap
+    check_if_bitmap_exists
     puts @bitmap.format_pixels
   end
 end
