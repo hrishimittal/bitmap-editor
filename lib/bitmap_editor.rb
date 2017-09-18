@@ -5,6 +5,9 @@ class BitmapEditor
 
   def initialize
     @bitmap = nil
+    # Using procs is a shortcut for brevity.
+    # If we wish to add many more commands,
+    # we should probably use a Command class.
     @commands = {
       I: proc { |args| create_bitmap(args) },
       L: proc { |args| colour_pixel(args) },
