@@ -34,4 +34,12 @@ describe Bitmap do
         "Segment out of bounds")
     end
   end
+
+  context 'colouring a vertical segment' do
+    let(:bitmap) { Bitmap.new(5,5) }
+    it 'raises error if vertical segment is out of bounds' do
+      expect { bitmap.set_vertical_segment_colour(0, 6, 8, 'O') }.to raise_error(StandardError,
+        "Segment out of bounds")
+    end
+  end
 end
