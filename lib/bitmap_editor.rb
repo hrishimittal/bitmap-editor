@@ -19,7 +19,6 @@ class BitmapEditor
     case command
     when 'I'
       create_image(args)
-      p @bitmap
     when 'L'
       image = colour_pixel(image, args)
     when 'V'
@@ -29,7 +28,7 @@ class BitmapEditor
     when 'C'
       image = clear_image(image)
     when 'S'
-      image = convert_image_matrix_to_string(image)
+      print_bitmap
     else
       image = 'unrecognised command :('
     end
@@ -82,8 +81,7 @@ class BitmapEditor
     image.map{ |row| row.fill('O') }
   end
 
-  def convert_image_matrix_to_string(image)
-    return unless image.is_a? Array
-    image.map{|row| row.join }.join("\n")
+  def print_bitmap
+    puts @bitmap.pixels.map{|row| row.join }.join("\n")
   end
 end
