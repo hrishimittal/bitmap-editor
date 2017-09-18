@@ -7,6 +7,10 @@ describe BitmapEditor do
     it 'raises error when running the L command' do
       expect { bitmap_editor.execute(['L', 1, 2, 'O']) }.to raise_error(StandardError, "No bitmap found")
     end
+
+    it 'raises error when running the S command' do
+      expect { bitmap_editor.execute(['S']) }.to raise_error(StandardError, "No bitmap found")
+    end
   end
 end
 
