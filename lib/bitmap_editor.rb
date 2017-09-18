@@ -37,10 +37,9 @@ class BitmapEditor
   end
 
   def parse_commands(filename)
-    raise 'please provide correct file' if filename.nil? || !File.exists?(filename)
+    fail StandardError, "Please provide a command file." if filename.nil?
+    fail StandardError, "Command file doesn't exist. Please provide a correct command file." if !File.exists?(filename)
     IO.readlines(filename).map(&:chomp)
-  rescue RuntimeError => e
-    $stderr.puts e.message
   end
 
   def create_image(args)
