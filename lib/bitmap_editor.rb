@@ -20,7 +20,7 @@ class BitmapEditor
 
     case command
     when 'I'
-      create_image(args)
+      create_bitmap(args)
     when 'L'
       colour_pixel(args)
     when 'V'
@@ -42,7 +42,7 @@ class BitmapEditor
     IO.readlines(filename).map(&:chomp)
   end
 
-  def create_image(args)
+  def create_bitmap(args)
     width = args[0].to_i
     height = args[1].to_i
     @bitmap = Bitmap.new(width, height)
