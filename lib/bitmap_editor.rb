@@ -49,6 +49,7 @@ class BitmapEditor
   end
 
   def colour_pixel(args)
+    check_if_bitmap_exists
     x = args[0].to_i
     y = args[1].to_i
     colour = args[2]
@@ -69,6 +70,10 @@ class BitmapEditor
     y2 = args[2].to_i
     colour = args[3]
     @bitmap.set_vertical_segment_colour(x, y1, y2, colour)
+  end
+
+  def check_if_bitmap_exists
+    fail StandardError, "No bitmap found" if @bitmap.nil?
   end
 
   def print_bitmap
