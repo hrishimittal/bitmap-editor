@@ -56,11 +56,11 @@ class BitmapEditor
   end
 
   def colour_horizontal_segment(args)
-    x1 = args[0].to_i - 1
-    x2 = args[1].to_i - 1
-    y = args[2].to_i - 1
+    x1 = args[0].to_i
+    x2 = args[1].to_i
+    y = args[2].to_i
     colour = args[3]
-    @bitmap.pixels[y].fill(colour, x1..x2)
+    @bitmap.set_horizontal_segment_colour(x1, x2, y, colour)
   end
 
   def colour_vertical_segment(args)

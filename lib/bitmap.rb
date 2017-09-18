@@ -20,6 +20,10 @@ class Bitmap
     @pixels.map{ |row| row.fill('O') }
   end
 
+  def set_horizontal_segment_colour(x1, x2, y, colour)
+    @pixels[y - 1].fill(colour, (x1 - 1)..(x2 - 1))
+  end
+
   def set_pixel_colour(x, y, colour)
     if out_of_bounds?(x, @width) || out_of_bounds?(y, @height)
       fail StandardError, "Pixel #{x}, #{y} doesn't exist in bitmap"
