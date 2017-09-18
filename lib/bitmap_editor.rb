@@ -39,7 +39,8 @@ class BitmapEditor
   def parse_commands(filename)
     raise StandardError, 'Please provide a command file.' if filename.nil?
     unless File.exist?(filename)
-      raise StandardError, 'Command file doesn\'t exist. Please provide a correct command file.'
+      raise StandardError,
+            'File doesn\'t exist. Please provide a correct command file.'
     end
     IO.readlines(filename).map(&:chomp)
   end
