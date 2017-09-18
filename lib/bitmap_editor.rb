@@ -57,6 +57,7 @@ class BitmapEditor
   end
 
   def colour_horizontal_segment(args)
+    check_if_bitmap_exists
     x1 = args[0].to_i
     x2 = args[1].to_i
     y = args[2].to_i
