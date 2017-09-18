@@ -65,6 +65,7 @@ class BitmapEditor
   end
 
   def colour_vertical_segment(args)
+    check_if_bitmap_exists
     x = args[0].to_i
     y1 = args[1].to_i
     y2 = args[2].to_i
