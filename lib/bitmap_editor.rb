@@ -28,7 +28,7 @@ class BitmapEditor
     when 'H'
       colour_horizontal_segment(args)
     when 'C'
-      @bitmap.clear
+      clear_bitmap
     when 'S'
       print_bitmap
     else
@@ -70,6 +70,11 @@ class BitmapEditor
     y2 = args[2].to_i
     colour = args[3]
     @bitmap.set_vertical_segment_colour(x, y1, y2, colour)
+  end
+
+  def clear_bitmap
+    check_if_bitmap_exists
+    @bitmap.clear
   end
 
   def check_if_bitmap_exists
