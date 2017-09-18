@@ -5,6 +5,14 @@ class BitmapEditor
 
   def initialize
     @bitmap = nil
+    @commands = {
+      I: proc { |args| create_bitmap(args) },
+      L: proc { |args| colour_pixel(args) },
+      V: proc { |args| colour_vertical_segment(args) },
+      H: proc { |args| colour_horizontal_segment(args) },
+      C: proc { clear_bitmap },
+      S: proc { print_bitmap }
+    }
   end
 
   def run(filename)
@@ -15,25 +23,12 @@ class BitmapEditor
   end
 
   def execute(command_with_args)
-    command = command_with_args.shift
+    command = command_with_args.shift.to_sym
     args = command_with_args
-
-    case command
-    when 'I'
-      create_bitmap(args)
-    when 'L'
-      colour_pixel(args)
-    when 'V'
-      colour_vertical_segment(args)
-    when 'H'
-      colour_horizontal_segment(args)
-    when 'C'
-      clear_bitmap
-    when 'S'
-      print_bitmap
-    else
+    unless @commands.keys.include? command
       raise StandardError, "Unrecognised command: #{command}"
     end
+    @commands[command].call(args)
   end
 
   def parse_commands(filename)
