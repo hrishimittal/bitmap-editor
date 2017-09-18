@@ -20,6 +20,10 @@ class Bitmap
     @pixels.map{ |row| row.fill('O') }
   end
 
+  def set_pixel_colour(x, y, colour)
+    @pixels[y][x] = colour
+  end
+
   private
 
   def out_of_bounds?(dimension)

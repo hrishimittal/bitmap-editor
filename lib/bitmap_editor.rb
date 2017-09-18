@@ -52,7 +52,7 @@ class BitmapEditor
     x = args[0].to_i - 1
     y = args[1].to_i - 1
     colour = args[2]
-    @bitmap.pixels[y][x] = colour
+    @bitmap.set_pixel_colour(x, y, colour)
   end
 
   def colour_horizontal_segment(args)
