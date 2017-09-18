@@ -1,5 +1,15 @@
 require './lib/bitmap_editor.rb'
 
+describe BitmapEditor do
+  let(:bitmap_editor) { BitmapEditor.new }
+
+  context 'when no bitmap has been created' do
+    it 'raises error when running the L command' do
+      expect { bitmap_editor.execute(['L', 1, 2, 'O']) }.to raise_error(StandardError, "No bitmap found")
+    end
+  end
+end
+
 describe 'I' do
   context 'when given two integers as arguments' do
     let(:output) { `bin/bitmap_editor ./examples/create_image.txt` }
