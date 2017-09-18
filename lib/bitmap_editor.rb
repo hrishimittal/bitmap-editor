@@ -32,13 +32,13 @@ class BitmapEditor
     when 'S'
       print_bitmap
     else
-      fail StandardError, "Unrecognised command: #{command}"
+      raise StandardError, "Unrecognised command: #{command}"
     end
   end
 
   def parse_commands(filename)
-    fail StandardError, "Please provide a command file." if filename.nil?
-    fail StandardError, "Command file doesn't exist. Please provide a correct command file." if !File.exists?(filename)
+    raise StandardError, 'Please provide a command file.' if filename.nil?
+    raise StandardError, 'Command file doesn\'t exist. Please provide a correct command file.' if !File.exists?(filename)
     IO.readlines(filename).map(&:chomp)
   end
 
@@ -80,7 +80,7 @@ class BitmapEditor
   end
 
   def check_if_bitmap_exists
-    fail StandardError, "No bitmap found" if @bitmap.nil?
+    raise StandardError, 'No bitmap found' if @bitmap.nil?
   end
 
   def print_bitmap
