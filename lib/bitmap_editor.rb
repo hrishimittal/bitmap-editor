@@ -38,6 +38,8 @@ class BitmapEditor
             'File doesn\'t exist. Please provide a correct command file.'
     end
 
+    # Note on performance: Reading in the whole file at once may be slow
+    # for large files and should be optimised accordingly
     IO.readlines(filename).map(&:chomp)
   end
 
