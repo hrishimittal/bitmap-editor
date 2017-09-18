@@ -26,4 +26,12 @@ describe Bitmap do
         "Pixel 7, 8 doesn't exist in bitmap")
     end
   end
+
+  context 'colouring a horizontal segment' do
+    let(:bitmap) { Bitmap.new(5,5) }
+    it 'raises error if horizontal segment is out of bounds' do
+      expect { bitmap.set_horizontal_segment_colour(2, 3, 8, 'O') }.to raise_error(StandardError,
+        "Segment out of bounds")
+    end
+  end
 end
