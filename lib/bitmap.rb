@@ -28,10 +28,10 @@ class Bitmap
   end
 
   def set_vertical_segment_colour(x, y1, y2, colour)
-    y1 = y1 - 1
-    y2 = y2 - 1
-    x = x - 1
-    @pixels[y1..y2].map{ |row| row[x] = colour }
+    if out_of_bounds?(x, @width) || out_of_bounds?(y2, @height) || out_of_bounds?(y2, @height)
+      fail StandardError, "Segment out of bounds"
+    end
+    @pixels[(y1 - 1)..(y2 - 1)].map{ |row| row[x - 1] = colour }
   end
 
   def set_pixel_colour(x, y, colour)
