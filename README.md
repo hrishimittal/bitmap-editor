@@ -11,6 +11,12 @@ There are 7 supported commands:
 ● F X Y C - Magic fill - colours a given pixel and all same-coloured pixels near it until it reaches a pixel with a different colour.
 ● S - Show the contents of the current image
 
-# Running
+## Running
 
-`>bin/bitmap_editor examples/show.txt`
+`$ ./bin/bitmap_editor examples/show.txt`
+
+## Testing
+
+Use rspec to run tests:
+
+`$ rspec`
