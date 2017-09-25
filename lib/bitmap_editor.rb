@@ -14,7 +14,8 @@ class BitmapEditor
       V: proc { |args| colour_vertical_segment(args) },
       H: proc { |args| colour_horizontal_segment(args) },
       C: proc { clear_bitmap },
-      S: proc { print_bitmap }
+      S: proc { print_bitmap },
+      F: proc { |args| magic_fill(args) }
     }
   end
 
@@ -44,6 +45,11 @@ class BitmapEditor
     # Note on performance: Reading in the whole file at once may be slow
     # for large files and should be optimised accordingly
     IO.readlines(filename).map(&:chomp)
+  end
+
+  def magic_fill(args)
+    x, y, colour = args
+    @bitmap.magic_fill(x, y, colour)
   end
 
   def create_bitmap(args)

@@ -137,5 +137,20 @@ describe BitmapEditor do
                               )
       end
     end
+
+    context 'magic fill' do
+      let(:output) { `bin/bitmap_editor ./examples/magic_fill.txt` }
+
+      it 'creates a bitmap with expected colours' do
+        expect(output).to eq(<<~EOS
+                                MXO
+                                MXO
+                                MXO
+                              EOS
+                              )
+      end
+    end
+
   end
+
 end
